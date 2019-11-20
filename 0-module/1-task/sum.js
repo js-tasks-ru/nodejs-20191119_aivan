@@ -1,6 +1,6 @@
 function sum(a, b) {
   /* ваш код */
-  if (!(typeof a === 'number' && typeof a === 'number')) {
+  if (!(typeof a === 'number' && typeof b === 'number')) {
   	throw new TypeError
   }
 

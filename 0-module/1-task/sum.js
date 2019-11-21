@@ -1,5 +1,8 @@
+function isNumber(n) {
+  return typeof n === 'number' && !Number.isNaN(n)
+}
 function sum(a, b) {
-  if (!(typeof a === 'number' && typeof b === 'number')) {
+  if (!(isNumber(a) && isNumber(b))) {
   	throw new TypeError
   }
 

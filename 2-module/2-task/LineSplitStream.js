@@ -4,6 +4,7 @@ const os = require('os');
 class LineSplitStream extends stream.Transform {
   constructor(options) {
     super(options);
+
     this.tempChunk = '';
   }
 

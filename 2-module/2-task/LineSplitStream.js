@@ -12,8 +12,6 @@ class LineSplitStream extends stream.Transform {
 
     str.split('').forEach((s) => {
       if (s === os.EOL) {
-        console.log('line is ', this.tempChunk);
-
         this.push(this.tempChunk);
         this.tempChunk = '';
       } else {

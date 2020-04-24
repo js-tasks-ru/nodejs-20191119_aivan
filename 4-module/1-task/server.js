@@ -17,28 +17,24 @@ server.on('request', (req, res) => {
 
 function getHandler(req, res) {
   const pathname = url.parse(req.url).pathname.slice(1);
-  console.log({pathname});
-
   const filepath = path.join(__dirname, 'files', pathname);
-  console.log({filepath});
 
+  // nested files are not supported
   if (pathname.includes('/')) {
     res.statusCode = 400;
     return res.end('Not found');
   }
 
-  res.statusCode = 200;
 
   const fileReadStream = fs.createReadStream(filepath);
-  fileReadStream.pipe(res);
 
   fileReadStream.on('error', () => {
     res.statusCode = 404;
     res.end('Not found file');
   });
 
-  // res.statusCode = 200;
-  // return res.end(pathname);
+  res.statusCode = 200;
+  fileReadStream.pipe(res);
 }
 
 module.exports = server;
